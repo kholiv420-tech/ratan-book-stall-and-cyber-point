@@ -82,6 +82,36 @@
       color: white;
       margin-top: 30px;
     }
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  header {
+    background: #1e3a8a;
+    color: white;
+  }
+
+  .card {
+    background: white;
+  }
+
+  /* 👉 এইটা add করো নিচে */
+  .card:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+  }
+
+  header {
+    background: linear-gradient(45deg, #1e3a8a, #2563eb);
+  }
+
+  button {
+    font-weight: bold;
+  }
+
+</style>
   </style>
 
 </head>
@@ -172,7 +202,7 @@
 
 <script>
 function order(product){
-  var number = "919000000000";
+  var number = "9197687803390";
   var msg = "Hello, I want to order " + product;
   window.open("https://wa.me/" + number + "?text=" + encodeURIComponent(msg));
 }
@@ -187,6 +217,23 @@ function setLang(lang){
   }
 }
 </script>
+<a href="https://wa.me/917687803390" target="_blank" class="whatsapp-float">
+  💬
+</a>
 
+<style>
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  font-size: 24px;
+  padding: 15px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+</style>
 </body>
 </html>
