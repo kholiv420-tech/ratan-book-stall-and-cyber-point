@@ -1,0 +1,155 @@
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { MessageCircle, MapPin, Printer, FileText, Globe } from "lucide-react";
+
+export default function ShopWebsite() {
+  const whatsappNumber = "917687803390"; // replace with your number
+  const mapLink = "https://share.google/T2U31puSlV4EyxCba";
+
+  const [products] = useState([
+    {
+      id: 1,
+      name: "School Text Books",
+      price: "₹20+",
+      image:
+        "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800",
+    },
+    {
+      id: 2,
+      name: "Pens & Pencils",
+      price: "₹5 - ₹100",
+      image:
+        "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=800",
+    },
+    {
+      id: 3,
+      name: "Office Stationery",
+      price: "₹50+",
+      image:
+        "https://images.unsplash.com/photo-1588072432836-e10032774350?w=800",
+    },
+  ]);
+
+  const handleWhatsAppOrder = (productName) => {
+    const message = `Hello, I want to order ${productName} from Ratan Book Stall & Cyber Point.`;
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(url, "_blank");
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 p-6">
+      {/* Header */}
+      <header className="text-center mb-10">
+        <div className="flex justify-center items-center gap-3 mb-3">
+          <div className="bg-blue-600 text-white px-4 py-2 rounded-2xl font-bold shadow">
+            RB
+          </div>
+          <h1 className="text-4xl font-bold">
+            Ratan Book Stall & Cyber Point
+          </h1>
+        </div>
+        <p className="text-gray-600">
+          Books, Stationery & Cyber Services in One Place
+        </p>
+      </header>
+
+      {/* Products */}
+      <section>
+        <h2 className="text-2xl font-bold mb-6 text-center">
+          Our Products
+        </h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {products.map((product) => (
+            <Card key={product.id} className="rounded-2xl shadow-lg">
+              <CardContent className="p-4 text-center">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="h-40 w-full object-cover rounded-xl mb-4"
+                />
+                <h2 className="text-xl font-semibold">{product.name}</h2>
+                <p className="text-green-600 mt-2 font-medium">
+                  {product.price}
+                </p>
+                <Button
+                  className="mt-4 w-full flex items-center justify-center gap-2"
+                  onClick={() => handleWhatsAppOrder(product.name)}
+                >
+                  <MessageCircle size={18} /> Order on WhatsApp
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Cyber Services */}
+      <section className="mt-16">
+        <h2 className="text-2xl font-bold mb-6 text-center">
+          Cyber Services
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          <Card className="rounded-2xl shadow-md text-center p-6">
+            <Printer className="mx-auto mb-3" size={32} />
+            <h3 className="font-semibold">Print & Xerox</h3>
+          </Card>
+
+          <Card className="rounded-2xl shadow-md text-center p-6">
+            <FileText className="mx-auto mb-3" size={32} />
+            <h3 className="font-semibold">Online Form Fill-up</h3>
+          </Card>
+
+          <Card className="rounded-2xl shadow-md text-center p-6">
+            <Globe className="mx-auto mb-3" size={32} />
+            <h3 className="font-semibold">Internet Services</h3>
+          </Card>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="mt-16 max-w-4xl mx-auto text-center">
+        <h2 className="text-2xl font-bold mb-4">Find Our Shop</h2>
+
+        <div className="rounded-2xl overflow-hidden shadow-md">
+          <iframe
+            src="https://maps.google.com/maps?q=Ratan%20Book%20Stall&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            className="w-full h-80 border-0"
+          ></iframe>
+        </div>
+
+        <a href={mapLink} target="_blank">
+          <Button className="mt-4 flex items-center gap-2 mx-auto">
+            <MapPin size={18} /> Get Directions
+          </Button>
+        </a>
+      </section>
+
+      {/* Contact */}
+      <section className="mt-16 max-w-xl mx-auto">
+        <h2 className="text-2xl font-bold mb-4 text-center">
+          Contact Us
+        </h2>
+        <div className="space-y-4">
+          <Input placeholder="Your Name" />
+          <Input placeholder="Your Phone" />
+          <Input placeholder="Your Message" />
+          <Button className="w-full">Send Message</Button>
+        </div>
+      </section>
+
+      {/* Floating WhatsApp */}
+      <a
+        href={`https://wa.me/${whatsappNumber}`}
+        target="_blank"
+        className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg"
+      >
+        <MessageCircle />
+      </a>
+    </div>
+  );
+}
