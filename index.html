@@ -89,8 +89,11 @@
 <body>
 
 <header>
-  <h1>Ratan Book Stall & Cyber Point</h1>
-  <p>Books, Stationery & Cyber Services in One Place</p>
+  <h1 id="title">Ratan Book Stall & Cyber Point</h1>
+  <p id="subtitle">Books, Stationery & Cyber Services in One Place</p>
+
+  <button onclick="setLang('en')">English</button>
+  <button onclick="setLang('bn')">বাংলা</button>
 </header>
 
 <div class="container">
@@ -140,9 +143,19 @@
 
 <script>
 function order(product){
-  var number = "917687803390"; // replace
+  var number = "919000000000";
   var msg = "Hello, I want to order " + product;
   window.open("https://wa.me/" + number + "?text=" + encodeURIComponent(msg));
+}
+
+function setLang(lang){
+  if(lang === 'bn'){
+    document.getElementById("title").innerText = "রতন বুক স্টল ও সাইবার পয়েন্ট";
+    document.getElementById("subtitle").innerText = "বই, স্টেশনারি ও সাইবার পরিষেবা";
+  } else {
+    document.getElementById("title").innerText = "Ratan Book Stall & Cyber Point";
+    document.getElementById("subtitle").innerText = "Books, Stationery & Cyber Services in One Place";
+  }
 }
 </script>
 
